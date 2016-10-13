@@ -1,0 +1,25 @@
+.foot01 {
+	height: 120px;
+	width: 1000px;
+	margin: 0 auto;
+	padding-top: 10px;
+}
+
+.navil {
+	float: center;
+	margin: 0 auto;
+}
+ul{
+	margin: 0 auto;
+}
+.navil-foot li {
+	float: right;
+	list-style: none;
+	height: 20px;
+	width: 150px;
+	text-align: center;
+	background-color: blue;
+}
+.anavi{
+	color: white;
+}

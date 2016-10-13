@@ -1,0 +1,32 @@
+.head01 {
+	height: 120px;
+	width: 1000px;
+	margin: 0 auto;
+	background-color: yellow;
+}
+
+.head01 .title01{
+	font-size:350%;
+	text-align: center;
+	background-color: red;
+	padding-top: 10px;
+}
+
+.navil {
+	float: center;
+	margin: 0 auto;
+	
+}
+
+.navil li {
+	font-size:250%;
+	float: left;
+	list-style: none;
+	height: 60px;
+	width: 300px;
+	text-align: center;
+	background-color: blue;
+}
+.anavi{
+	color: white;
+}
