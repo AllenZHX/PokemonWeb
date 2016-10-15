@@ -144,8 +144,8 @@ div .div001{
 	height:300px;
 	background-color:blue;
 }
-.statustable{
-	width:100%;
-	height:100%;
+table .statustable{
+	width:1000;
+	height:200px;
 	background-color:yellow;
 }
