@@ -1,0 +1,5 @@
+﻿1： overview of sample project
+https://marcobonzanini.com/2015/06/16/mining-twitter-data-with-python-and-js-part-7-geolocation-and-interactive-maps/
+
+2: Twitter Python API:Tweepy
+http://tweepy.readthedocs.io/en/v3.5.0/
