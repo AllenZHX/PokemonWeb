@@ -1,0 +1,39 @@
+
+CREATE DATABASE pokemon;
+use pokemon
+
+CREATE TABLE `pokemonData`(
+`#` INT NOT NULL AUTO_INCREMENT,
+`Name` VARCHAR(50) NOT NULL,
+`Type_1` VARCHAR(30) NOT NULL,
+`Type_2` VARCHAR(30) NOT NULL,
+`Total` INT NOT NULL,
+`HP` INT NOT NULL,
+`Attack` INT NOT NULL,
+`Defense` INT NOT NULL,
+`Sp_Atk` INT NOT NULL,
+`Sp_Def` INT NOT NULL,
+`Speed` INT NOT NULL,
+`Generation` INT NOT NULL,
+`Legendary` VARCHAR(20) NOT NULL,
+PRIMARY KEY (`#`));
+
+
+????put Pokemon.csv under the folder "/var/lib/mysql-files", but permission problem here????
+!!!!use "sudo -i" to get in root model;
+!!!!"cd /var/lib/mysql-files"
+!!!!"cp -b /home/hong/PokemonWeb/data/Pokemon.csv /var/lib/mysql-files" 
+
+!!!!Done!
+
+
+LOAD DATA INFILE '/var/lib/mysql-files/Pokemon.csv'
+INTO TABLE `pokemonData`
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+!!!done!!!
+SELECT * FROM pokemonData;
