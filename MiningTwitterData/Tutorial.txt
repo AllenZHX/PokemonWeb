@@ -3,3 +3,6 @@ https://marcobonzanini.com/2015/06/16/mining-twitter-data-with-python-and-js-par
 
 2: Twitter Python API:Tweepy
 http://tweepy.readthedocs.io/en/v3.5.0/
+
+3： Pymongo API
+http://api.mongodb.com/python/current/tutorial.html?_ga=1.130322575.1610853117.1475868634
