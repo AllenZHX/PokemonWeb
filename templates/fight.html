@@ -3,10 +3,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="../static/css/common.css" type="text/css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#header").load("/head");
+    $("#footer").load("/foot");
+    $("#test001").click(function(){
+	 alert("Text: " + $("#test001").text());	
+	});
+});
+</script>
 </head>
 <body>
+<div id="header"></div>
 
-<IFRAME width=100% height=250 marginwidth=0 marginheight=0 SRC="head" frameborder=0 ></IFRAME>
 
 <div class="more">
 	<p>More in here!!!----fight!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
@@ -14,9 +24,7 @@
 
 
 
-
-
-<IFRAME width=100% height=250 marginwidth=0 marginheight=0 SRC="foot" frameborder=0 ></IFRAME>
+<div id="footer"></div>
 </body>
 
 
