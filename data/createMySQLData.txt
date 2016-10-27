@@ -37,3 +37,27 @@ IGNORE 1 ROWS;
 
 !!!done!!!
 SELECT * FROM pokemonData;
+
+CREATE DATABASE twitterhot;
+
+use twitterhot
+
+CREATE TABLE `pokemonCount`(
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `Name` VARCHAR(50) NOT NULL,
+    `Freq` INT NOT NULL,
+    PRIMARY KEY (`id`));
+
+????put Count.csv under the folder "/var/lib/mysql-files", but permission problem here????
+!!!!use "sudo -i" to get in root model;
+!!!!"cd /var/lib/mysql-files"
+!!!!"cp -b /home/hong/PokemonWeb/data/Count.csv /var/lib/mysql-files" 
+
+!!!!Done!
+
+LOAD DATA INFILE '/var/lib/mysql-files/Count.csv'
+INTO TABLE `pokemonCount`
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
