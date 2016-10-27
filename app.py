@@ -2,15 +2,6 @@ from flask import Flask, render_template, request, json
 
 app = Flask(__name__)
 
-@app.route('/head')
-def head():
-	return render_template('head.html')
-
-@app.route('/foot')
-def foot():
-	return render_template('foot.html')
-
-
 @app.route('/fight')
 def fight():
 	return render_template('fight.html')

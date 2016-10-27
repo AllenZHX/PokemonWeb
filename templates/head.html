@@ -1,30 +1,27 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>pokemon</title>
-<link rel="stylesheet" href="../static/css/head.css" type="text/css"></link>
-<script type="text/javascript">
-		function changeBG(o){
-			o.style.backgroundColor="#5C75AA";
-		}
-		function changeBG2(o){
-			o.style.backgroundColor="";
-		}
-</script>
-</head>
-<body>
-	<div class="head01">
-		<p class="title01">POKEMON GO APP</p>
-		<ul class="navil">
-			<li onmouseover="changeBG(this)" onmouseout="changeBG2(this)"><a
-				class="anavi" href="dictionary" target="_blank">Dictionary</a></li>
-			<li onmouseover="changeBG(this)" onmouseout="changeBG2(this)"><a
-				class="anavi" href="fight" target="_blank">Fight</a></li>
-			<li onmouseover="changeBG(this)" onmouseout="changeBG2(this)"><a
-				class="anavi" href="twitter" target="_blank">Twitter top</a></li>
-		</ul>
-	</div>
+<title>PokemonGo</title>
+<meta charset="utf-8">
+<link href="../static/css/examples-offline.css" rel="stylesheet">
+<link href="../static/css/kendo.common.min.css" rel="stylesheet">
+<link href="../static/css/kendo.rtl.min.css" rel="stylesheet">
+<link href="../static/css/kendo.default.min.css" rel="stylesheet">
+<link href="../static/css/kendo.default.mobile.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../static/css/common.css" type="text/css"></link>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/jszip.min.js"></script>
+<script src="../static/js/kendo.all.min.js"></script>
+<script src="../static/js/console.js"></script>
+<nav id="main-nav" style="text-align:center;">
+	<ol>
+		<li></li>
+	</ol>
+</nav>
+<div id="slide" style="text-align:center;">
+	<span id="menu"><a href="#main-nav">&#8801;</a></span>
+	<img src="http://cdn.idigitaltimes.com/sites/idigitaltimes.com/files/2016/07/15/pokemon-go-release-date-canada-japan-philippines-india-asia-brazil-how-play-when-will.jpg" style="width: 1200px; height: 300px; margin: 5 0 0 0;"><br>
+	<a class="offline-button" href="dictionary">dictionary</a>
+	<a class="offline-button" href="fight">Fight</a>
+	<a class="offline-button" href="twitter">Twitter</a>
+</div>
+{% block body %}{% endblock %}
 
-</body>
-</html>

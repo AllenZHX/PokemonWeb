@@ -1,135 +1,91 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" href="../static/css/common.css" type="text/css"></link>
-<link rel="stylesheet" href="../static/css/pokemonstatus.css" type="text/css"></link>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("#header").load("/head");
-    $("#footer").load("/foot");
-    $("#test001").click(function(){
-	 alert("Text: " + $("#test001").text());	
-	});
-});
-</script>
-</head>
-<body>
+{% extends "head.html" %}
+{% block body %}
 
-<div id="header"></div>
-<div class="more">
-	
-	<div class="div001">
-		<nav class="multi_drop_menu">
-			<ul><!-- 一级开始 -->
-				<li><a href="#">Type</a>
-					<ul><!-- 二级开始 -->
-						<li id = "test001"><a href="#">Grass</a></li>
-						<li id = "test002"><a href="#">Fire</a></li>
-						<li><a href="#">Water</a></li>
-						<li><a href="#">Bug</a></li>
-						<li><a href="#">Normal</a></li>
-						<li><a href="#">Poison</a></li>
-						<li><a href="#">Flying</a></li>
-						<li><a href="#">Ground</a></li>
-						<li><a href="#">Fairy</a></li>
-						<li><a href="#">Fighting</a></li>
-						<li><a href="#">Rock</a></li>
-						<li><a href="#">Psychic</a></li>
-						<li><a href="#">Electric</a></li>
-						<li><a href="#">Dark</a></li>
-						<li><a href="#">Ice</a></li>
-						<li><a href="#">Dragon</a></li>
-					</ul><!-- 二级结束 -->
-				</li>
-				<li><a href="#">Total</a>
-					<ul><!-- 二级开始 -->
-						<li><a href="#">0~200</a></li>
-						<li><a href="#">201~300</a></li>
-						<li><a href="#">301~400</a></li>
-						<li><a href="#">401~500</a></li>
-						<li><a href="#">501~600</a></li>
-						<li><a href="#">601~700</a></li>
-						<li><a href="#">700+</a></li>
-					</ul><!-- 二级结束 -->
-				</li>
-				<li><a href="#">HP</a>
-					<ul><!-- 二级开始 -->
-						<li><a href="#">0~50</a></li>
-						<li><a href="#">51~100</a></li>
-						<li><a href="#">100+</a></li>
-					</ul><!-- 二级结束 -->
-				</li>
-				<li><a href="#">Lvl.Evl</a>
-					<ul><!-- 二级开始 -->
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3+</a></li>
-					</ul><!-- 二级结束 -->
-				</li>
-				<li><a href="#">Attack</a>
-					<ul><!-- 二级开始 -->
-						<li><a href="#">0~50</a></li>
-						<li><a href="#">51~100</a></li>
-						<li><a href="#">100+</a></li>
-					</ul><!-- 二级结束 -->
-				</li>
-				<li><a href="#">Defense</a>
-					<ul><!-- 二级开始 -->
-						<li><a href="#">0~50</a></li>
-						<li><a href="#">51~100</a></li>
-						<li><a href="#">100+</a></li>
-					</ul><!-- 二级结束 -->
-				</li>
-			</ul><!-- 一级结束 -->
-		</nav>
-	</div>
-	<div>
-	<table border="1" class="statustable">
-		<tr>
-			<th>#</th>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Total</th>
-			<th>HP</th>
-			<th>Attack</th>
-			<th>Defense</th>
-			<th>Sp.Atk</th>
-			<th>Speed</th>
-			<th>Lvl.Evl</th>
-			<th>Legendary</th>
-		</tr>
-		<tr>
-			<td>row 1, cell 1</td>
-			<td>row 1, cell 2</td>
-			<td>row 1, cell 1</td>
-			<td>row 1, cell 2</td>
-			<td>row 1, cell 1</td>
-			<td>row 1, cell 2</td>
-			<td>row 1, cell 2</td>
-			<td>row 1, cell 1</td>
-			<td>row 1, cell 2</td>
-			<td>row 1, cell 1</td>
-			<td>row 1, cell 2</td>
-		</tr>
-		<tr>
-			<td>row 2, cell 1</td>
-			<td>row 2, cell 2</td>
-			<td>row 1, cell 1</td>
-			<td>row 1, cell 2</td>
-			<td>row 1, cell 1</td>
-			<td>row 1, cell 2</td>
-			<td>row 2, cell 2</td>
-			<td>row 1, cell 1</td>
-			<td>row 1, cell 2</td>
-			<td>row 1, cell 1</td>
-			<td>row 1, cell 2</td>
-		</tr>
-	</table>
-	</div>
-	
+<script src="../static/js/pokemons.js"></script>
+
+        <div id="example">
+            <div id="grid"></div>
+
+            <script>
+                $(document).ready(function() {
+                    $("#grid").kendoGrid({
+                        dataSource: {
+                            data: pokemons,
+                            schema: {
+                                model: {
+                                    fields: {
+                                        id: { type: "number" },
+                                        Name: { type: "string" },
+                                        Type_1: { type: "string" },
+                                        Type_2: { type: "string" },
+										Total: { type: "number" },
+                                        HP: { type: "number" },
+                                        Attack: { type: "number" },
+                                        Defense: { type: "number" },
+										Sp_Atk: { type: "number" },
+                                        Sp_Def: { type: "number" },
+                                        Speed: { type: "number" },
+                                        Generation: { type: "number" },
+										Legendary: { type: "boolean" },
+                                    }
+                                }
+                            },
+                            pageSize: 40
+                        },
+                        height: 700,
+                        scrollable: true,
+                        sortable: true,
+                        filterable: true,
+                        pageable: {
+                            input: true,
+                            numeric: false
+                        },
+                        columns: [
+                            { field: "id", width:  "50px"},
+                            { template: "<div class='customer-photo'" +
+                                       "style='background-position:  #:-(id-1)*75#px #:-parseInt((id-1)/16)*75#px;'></div>" +
+                                       "<div class='customer-name'>#: Name #</div>",
+			      field: "Name",width: "200px"},
+                            { field: "Type_1", width: "80px" },
+                            { field: "Type_2", width: "80px" },
+			    { field: "Total", width: "80px" },
+                            { field: "HP", width: "80px" },
+                            { field: "Attack", width: "80px" },
+			    { field: "Defense", width: "80px" },
+                            { field: "Sp_Atk", width: "80px" },
+                            { field: "Sp_Def", width: "80px" },
+			    { field: "Speed", width: "80px" },
+                            { field: "Generation", width: "80px" },
+                            { field: "Legendary", width: "80px" }
+                        ]
+                    });
+                });
+            </script>
 </div>
-<div id="footer"></div>
-</body>
-</html>
+<style type="text/css">
+    .customer-photo {
+        display: inline-block;
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        background-size: 1200px 750px;
+		background-image: url(../static/css/images/bgwch2.png);
+        vertical-align: middle;
+        line-height: 32px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-left: 5px;
+    }
+
+    .customer-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        padding-left: 3px;
+    }
+</style>
+
+<div style="text-align:center;">
+<p><a class="offline-button" href="" title="Python810" target="_blank">Python810</a></p>
+</div>
+    
+{% endblock %}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../static/css/common.css" type="text/css"></link>
+<link rel="stylesheet" href="../static/css/pokemonstatus.css" type="text/css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#header").load("/head");
+    $("#footer").load("/foot");
+    $("#test001").click(function(){
+	 alert("Text: " + $("#test001").text());	
+	});
+});
+</script>
+</head>
+<body>
+
+<div id="header"></div>
+<div class="more">
+	
+	<div class="div001">
+		<nav class="multi_drop_menu">
+			<ul><!-- 一级开始 -->
+				<li><a href="#">Type</a>
+					<ul><!-- 二级开始 -->
+						<li id = "test001"><a href="#">Grass</a></li>
+						<li id = "test002"><a href="#">Fire</a></li>
+						<li><a href="#">Water</a></li>
+						<li><a href="#">Bug</a></li>
+						<li><a href="#">Normal</a></li>
+						<li><a href="#">Poison</a></li>
+						<li><a href="#">Flying</a></li>
+						<li><a href="#">Ground</a></li>
+						<li><a href="#">Fairy</a></li>
+						<li><a href="#">Fighting</a></li>
+						<li><a href="#">Rock</a></li>
+						<li><a href="#">Psychic</a></li>
+						<li><a href="#">Electric</a></li>
+						<li><a href="#">Dark</a></li>
+						<li><a href="#">Ice</a></li>
+						<li><a href="#">Dragon</a></li>
+					</ul><!-- 二级结束 -->
+				</li>
+				<li><a href="#">Total</a>
+					<ul><!-- 二级开始 -->
+						<li><a href="#">0~200</a></li>
+						<li><a href="#">201~300</a></li>
+						<li><a href="#">301~400</a></li>
+						<li><a href="#">401~500</a></li>
+						<li><a href="#">501~600</a></li>
+						<li><a href="#">601~700</a></li>
+						<li><a href="#">700+</a></li>
+					</ul><!-- 二级结束 -->
+				</li>
+				<li><a href="#">HP</a>
+					<ul><!-- 二级开始 -->
+						<li><a href="#">0~50</a></li>
+						<li><a href="#">51~100</a></li>
+						<li><a href="#">100+</a></li>
+					</ul><!-- 二级结束 -->
+				</li>
+				<li><a href="#">Lvl.Evl</a>
+					<ul><!-- 二级开始 -->
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3+</a></li>
+					</ul><!-- 二级结束 -->
+				</li>
+				<li><a href="#">Attack</a>
+					<ul><!-- 二级开始 -->
+						<li><a href="#">0~50</a></li>
+						<li><a href="#">51~100</a></li>
+						<li><a href="#">100+</a></li>
+					</ul><!-- 二级结束 -->
+				</li>
+				<li><a href="#">Defense</a>
+					<ul><!-- 二级开始 -->
+						<li><a href="#">0~50</a></li>
+						<li><a href="#">51~100</a></li>
+						<li><a href="#">100+</a></li>
+					</ul><!-- 二级结束 -->
+				</li>
+			</ul><!-- 一级结束 -->
+		</nav>
+	</div>
+	<div>
+	<table border="1" class="statustable">
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Total</th>
+			<th>HP</th>
+			<th>Attack</th>
+			<th>Defense</th>
+			<th>Sp.Atk</th>
+			<th>Speed</th>
+			<th>Lvl.Evl</th>
+			<th>Legendary</th>
+		</tr>
+		<tr>
+			<td>row 1, cell 1</td>
+			<td>row 1, cell 2</td>
+			<td>row 1, cell 1</td>
+			<td>row 1, cell 2</td>
+			<td>row 1, cell 1</td>
+			<td>row 1, cell 2</td>
+			<td>row 1, cell 2</td>
+			<td>row 1, cell 1</td>
+			<td>row 1, cell 2</td>
+			<td>row 1, cell 1</td>
+			<td>row 1, cell 2</td>
+		</tr>
+		<tr>
+			<td>row 2, cell 1</td>
+			<td>row 2, cell 2</td>
+			<td>row 1, cell 1</td>
+			<td>row 1, cell 2</td>
+			<td>row 1, cell 1</td>
+			<td>row 1, cell 2</td>
+			<td>row 2, cell 2</td>
+			<td>row 1, cell 1</td>
+			<td>row 1, cell 2</td>
+			<td>row 1, cell 1</td>
+			<td>row 1, cell 2</td>
+		</tr>
+	</table>
+	</div>
+	
+</div>
+<div id="footer"></div>
+</body>
+</html>
