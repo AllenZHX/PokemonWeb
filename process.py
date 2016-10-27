@@ -1,9 +1,10 @@
 import json
+import csv
 from pprint import pprint
 def wordscount():
 	textdata = []
 	rownum = 1
-	with open('pokemon.json') as data_file: 
+	with open('../MiningTwitterData/pokemon.json') as data_file: 
 		for line in data_file: 
 			if((rownum % 2) == 1):
 		    		data = json.loads(line)
@@ -20,7 +21,7 @@ def wordscount():
 		raw = textdata[num].lower()
 		tokens = tokenizer.tokenize(raw)
 		en_stop = get_stop_words('en')
-		stopped_tokens = [i for i in tokens if (len(i)>5 and len(i)<20 and not i in en_stop)]
+		stopped_tokens = [i for i in tokens if (len(i)>3 and len(i)<20 and not i in en_stop)]
 		allwords.append(stopped_tokens)
 
 	import itertools
@@ -31,6 +32,18 @@ def wordscount():
 	from collections import Counter
 	aa = Counter(newAllwords)    #aa is a dictionary{"word": num}
 	return aa
+
+def getallpokenames():
+	list = []
+	with open('/home/hong/PokemonWeb/data/Count.csv', 'rb') as f:
+	    reader = csv.reader(f)
+	    for row in reader:
+		list.append(row[1])
+	list = list[1:]
+	return list
+
+
+
 
 
 

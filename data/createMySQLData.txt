@@ -37,11 +37,7 @@ IGNORE 1 ROWS;
 
 !!!done!!!
 SELECT * FROM pokemonData;
-
-CREATE DATABASE twitterhot;
-
-use twitterhot
-
+######################################################################################################
 CREATE TABLE `pokemonCount`(
     `id` INT NOT NULL AUTO_INCREMENT,
     `Name` VARCHAR(50) NOT NULL,
