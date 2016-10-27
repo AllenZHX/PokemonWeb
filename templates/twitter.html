@@ -3,5 +3,10 @@
 
 <div class="more">
 	<p>More in here!!!----twitter#########################</p>
+	<ul>
+	  {% for entry in poke %}
+	    <li><h2>{{entry[1]}}</h2></li>
+	  {% endfor %}
+	</ul>
 </div>
 {% endblock %}
