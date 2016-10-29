@@ -4,7 +4,7 @@ from pprint import pprint
 def wordscount():
 	textdata = []
 	rownum = 1
-	with open('../MiningTwitterData/pokemon.json') as data_file: 
+	with open('/home/hong/PokemonWeb/MiningTwitterData/pokemon.json') as data_file: 
 		for line in data_file: 
 			if((rownum % 2) == 1):
 		    		data = json.loads(line)
@@ -41,8 +41,6 @@ def getallpokenames():
 		list.append(row[1])
 	list = list[1:]
 	return list
-
-
 
 
 
