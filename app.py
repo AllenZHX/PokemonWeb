@@ -55,7 +55,7 @@ def main():
 	return render_template('index.html')
 
 if __name__ == "__main__":
-	app.run(host='192.168.1.164')   # BUG! BUG! BUG! cannot use ctrl+C to stop it!!!!!
+	app.run(host='10.0.2.15')   # BUG! BUG! BUG! cannot use ctrl+C to stop it!!!!!
 	
 	
 
