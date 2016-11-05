@@ -6,7 +6,7 @@ from process import getallpokenames
 import time
 from threading import Thread
 
-app = Flask(__name__)
+app = Flask(__name__,static_url_path = "")
 mysql = MySQL()
 
 app.config['MYSQL_DATABASE_USER'] = 'root'
@@ -33,7 +33,7 @@ def test():
 		updateData()
 		print("----test----")
 
-Thread(target = test).start()
+#Thread(target = test).start()
 
 @app.route('/fight')
 def fight():
