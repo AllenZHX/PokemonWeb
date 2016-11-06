@@ -1,8 +1,8 @@
-﻿/**
+/**
  * zDialog 2.0
  * 最后修正：2009-12-18
  **/
-var IMAGESPATH = '../images/'; //图片路径配置
+var IMAGESPATH = '/images/'; //图片路径配置
 /*************************一些公用方法和属性****************************/
 var isIE = navigator.userAgent.indexOf('MSIE') != -1;
 var isIE6 = navigator.userAgent.indexOf('MSIE 6.0') != -1;
