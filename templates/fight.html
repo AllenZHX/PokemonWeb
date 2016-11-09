@@ -1,5 +1,7 @@
 {% extends "head.html" %}
 {% block body %}
+<script src="/js/jquery-3.1.1.min.js"></script> 
+<script src="/js/signUp.js"></script>
 <style>
 body { background: #ffffff; color: #444; font-size:12px;}
 a { color: #07c; text-decoration: none; border: 0; background-color: transparent; }
@@ -112,8 +114,8 @@ function winorlose()
 	var enemyId = document.querySelector('input[name="toggle2"]:checked').value;
 	var yourCp = document.querySelector('input[name="cp01"]').value;
 	var enemyCp = document.querySelector('input[name="cp02"]').value;
-	document.getElementById('yourId').innerHTML = yourId;
-	document.getElementById('enemyId').innerHTML = enemyId;
+	document.getElementById('yourId').value = yourId;
+	document.getElementById('enemyId').value = enemyId;
 	if(+yourCp>=+enemyCp)
 	{	document.getElementById('lose').style.display = 'none';
 		document.getElementById('win').style.display = 'block';
@@ -134,6 +136,7 @@ function open1()
 								var positionX = -(rate_value-1)*81.0625;
 								var positionY = -parseInt((rate_value-1)/16)*81.0625;
 								$id('a001').style.backgroundPosition = positionX+"px " +positionY +"px";
+								$id('yourId').value = rate_value;
 								
 								diag.close();
 							};
@@ -150,6 +153,7 @@ function open2()
 								var positionX = -(rate_value-1)*81.0625;
 								var positionY = -parseInt((rate_value-1)/16)*81.0625;
 								$id('a002').style.backgroundPosition = positionX+"px " +positionY +"px";
+								$id('enemyId').value = rate_value;
 								
 								diag.close();
 							};
@@ -176,12 +180,21 @@ function open2()
 			<p style="font-size:20px;">CP:</p><input type="number" id="cp002" name="cp02" min="1" max="3000">
 		</form>
 	</div>
+		
+	
+	<form class="form-signin">
+		<label class="sr-only">Your Pokemon ID:</label>
+		<input name="YourID" id="yourId" class="form-control" required autofocus>
+		<label class="sr-only">Enemy Pokemon ID:</label>
+		<input name="EnemyID" id="enemyId" class="form-control" required autofocus>
+		<button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">show pokemon information</button>
+        </form>
+	Pokemon's info:
+	<div id="yourname" ></div>
+	<br/><br/>
 	<div id="fightButton" style="text-align:center;">
 		<button style="font-size:30px;" onclick="winorlose()">Fight!</button>
 	</div>
-	<div id="yourId"></div><br/>
-	<div id="enemyId"></div>
-	<br/><br/>
 	<img id="win" src="/images/win.gif" style="display: none; margin: 0 auto;" />
 	<img id="lose" src="/images/lose.gif" style="display: none; margin: 0 auto;" />
 

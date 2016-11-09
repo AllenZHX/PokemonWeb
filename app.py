@@ -35,6 +35,20 @@ def test():
 
 #Thread(target = test).start()
 
+@app.route('/signUp', methods=['POST'])
+def signUp():
+    try:
+	_YourID = request.form['YourID']
+	cursor.execute("SELECT Name,Type_1,Type_2 FROM pokemonData WHERE id=%s",_YourID)
+	YourName = cursor.fetchall()
+	_EnemyID = request.form['EnemyID']
+	cursor.execute("SELECT Name,Type_1,Type_2 FROM pokemonData WHERE id=%s",_EnemyID)
+	EnemyName = cursor.fetchall()
+
+	return json.dumps({'yourpoke':str(YourName[0]),'enemypoke':str(EnemyName[0])})
+    except Exception as e:
+        return json.dumps({'error':str(e)})
+
 @app.route('/fight')
 def fight():
 	return render_template('fight.html')
@@ -55,7 +69,7 @@ def main():
 	return render_template('index.html')
 
 if __name__ == "__main__":
-	app.run(host='192.168.1.164')   # BUG! BUG! BUG! cannot use ctrl+C to stop it!!!!!
+	app.run(host='10.0.2.15')   # BUG! BUG! BUG! cannot use ctrl+C to stop it!!!!!
 	
 	
 
