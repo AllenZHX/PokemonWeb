@@ -57,3 +57,48 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
+
+#####################################################################################################
+CREATE TABLE `pokemonRest`(
+`id` INT NOT NULL AUTO_INCREMENT,
+`Type` VARCHAR(50) NOT NULL,
+`Normal` INT NOT NULL,
+`Fire` INT NOT NULL,
+`Water` INT NOT NULL,
+`Grass` INT NOT NULL,
+`Electric` INT NOT NULL,
+`Ice` INT NOT NULL,
+`Fighting` INT NOT NULL,
+`Poison` INT NOT NULL,
+`Ground` INT NOT NULL,
+`Flying` INT NOT NULL,
+`Psychic` INT NOT NULL,
+`Bug` INT NOT NULL,
+`Rock` INT NOT NULL,
+`Ghost` INT NOT NULL,
+`Dragon` INT NOT NULL,
+`Steel` INT NOT NULL,
+`Fairy` INT NOT NULL,
+PRIMARY KEY (`id`));
+
+????put xiangke.csv under the folder "/var/lib/mysql-files", but permission problem here????
+!!!!use "sudo -i" to get in root model;
+!!!!"cd /var/lib/mysql-files"
+!!!!"cp -b /home/hong/PokemonWeb/data/xiangke.csv /var/lib/mysql-files" 
+
+LOAD DATA INFILE '/var/lib/mysql-files/xiangke.csv'
+INTO TABLE `pokemonRest`
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+
+
+
+
+
+
+
+

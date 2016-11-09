@@ -17,7 +17,7 @@ pre{background:#f6f6f6; border:#eee solid 1px; margin:1em 0.5em; padding:0.5em 1
 #content { margin: 0 auto;}
 #content h2 { font-size:20px; color:#069; padding-top:8px; margin-bottom:8px; }
 #content h3 { margin:8px 0; font-size:14px; COLOR:#693; }
-#content h4 { margin:8px 0; font-size:16px; COLOR:#690; }
+#content h4 { margin:8px 0; font-size:16px; }
 #content div.item { margin-top:10px; margin-bottom:10px; border:#eee solid 4px; padding:100px 100px 200px 100px;}
 #content div.item input#a001{width:81px; height:81px;background:url('/images/bgwch2.png');margin:0 auto;}
 #content div.item input#a002{width:81px; height:81px;background:url('/images/bgwch2.png');margin:0 auto;}
@@ -27,8 +27,8 @@ pre{background:#f6f6f6; border:#eee solid 1px; margin:1em 0.5em; padding:0.5em 1
 #content div.item #cp02{float:top;margin:0 auto;}
 #content div.item input#cp001{width:65px; }
 #content div.item input#cp002{width:65px;}
-#yourinfo {float:left;margin:0 auto; width:50%;height:125px;background-color:#00BFFF;}
-#enemyinfo {float:left;margin:0 auto; width:50%;height:125px;background-color:#90EE90;}
+#yourinfo {float:left;margin:0 auto; width:50%;height:300px;background-color:#00BFFF;}
+#enemyinfo {float:left;margin:0 auto; width:50%;height:300px;background-color:#90EE90;}
 hr { clear:both; margin:7px 0; +margin: 0;
 border:0 none; font-size: 1px; line-height:1px; color: #069; background-color:#069; height: 1px; }
 .infobar { background:#fff9e3; border:1px solid #fadc80; color:#743e04; }
@@ -116,16 +116,28 @@ function winorlose()
 	var enemyId = document.querySelector('input[name="toggle2"]:checked').value;
 	var yourCp = document.querySelector('input[name="cp01"]').value;
 	var enemyCp = document.querySelector('input[name="cp02"]').value;
+	var yourDam = document.querySelector('#yourDamage').innerHTML;
+	var enemyDam = document.querySelector('#enemyDamage').innerHTML;
 	document.getElementById('yourId').value = yourId;
 	document.getElementById('enemyId').value = enemyId;
-	if(+yourCp>=+enemyCp)
-	{	document.getElementById('lose').style.display = 'none';
-		document.getElementById('win').style.display = 'block';
+	var your= parseFloat(yourDam);
+	var enemy = parseFloat(enemyDam);
+	if(+your == +enemy){
+		if(+yourCp>=+enemyCp)
+		{	document.getElementById('lose').style.display = 'none';
+			document.getElementById('win').style.display = 'block';
 		
+		}else{
+			document.getElementById('win').style.display = 'none';
+			document.getElementById('lose').style.display = 'block';
+		
+		}
+	}else if(+your > +enemy){
+		document.getElementById('lose').style.display = 'none';
+		document.getElementById('win').style.display = 'block';
 	}else{
 		document.getElementById('win').style.display = 'none';
 		document.getElementById('lose').style.display = 'block';
-		
 	}
 }
 function open1()
@@ -192,19 +204,30 @@ function open2()
         </form>
 	</br>
 	<div id="yourinfo" style="display:none;text-align:center;"><h2>Pokemon's info:</h2>
-		<div id="yourname"></div>
-		<div id="yourtype1"></div>
-		<div id="yourtype2"></div>
+		<h4>Name:</h4><div id="yourname"></div>
+		<h4>Type_1:</h4><div id="yourtype1"></div>
+		<h4>Type_2:</h4><div id="yourtype2"></div>
+		<h4>Damage:</h4><div id="yourDamage"></div>
 	</div>
 	<div id="enemyinfo" style="display:none;text-align:center;"><h2>Pokemon's info:</h2>
-		<div id="enemyname"></div>
-		<div id="enemytype1"></div>
-		<div id="enemytype2"></div>
+		<h4>Name:</h4><div id="enemyname"></div>
+		<h4>Type_1:</h4><div id="enemytype1"></div>
+		<h4>Type_2:</h4><div id="enemytype2"></div>
+		<h4>Damage:</h4><div id="enemyDamage"></div>
 	</div>
 	<br/><br/>
+
+	<form class="form-signin" style="text-align:center;">
+	<label class="sr-only"  style="display:none">Your Pokemon Type:</label>
+		<input name="YourType1" id="yourType1" class="form-control" value="Grass" required autofocus  style="display:none">
+		<label class="sr-only"  style="display:none">Enemy Pokemon Type:</label>
+		<input name="EnemyType1" id="enemyType1" class="form-control" value="Grass" required autofocus style="display:none">
+		<button id="btnSignUp02" class="btn btn-lg btn-primary btn-block" type="button" >Damage Calculate</button>
+	</form>
+	<br/><br/>
 	<div id="fightButton" style="text-align:center;">
-		<button style="font-size:30px;" onclick="winorlose()">Fight!</button>
-	</div>
+			<button style="font-size:30px;" onclick="winorlose()">Fight!</button>
+		</div>
 	<img id="win" src="/images/win.gif" style="display: none; margin: 0 auto;" />
 	<img id="lose" src="/images/lose.gif" style="display: none; margin: 0 auto;" />
 

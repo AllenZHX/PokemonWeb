@@ -40,12 +40,28 @@ def signUp():
     try:
 	_YourID = request.form['YourID']
 	cursor.execute("SELECT Name,Type_1,Type_2 FROM pokemonData WHERE id=%s",_YourID)
-	YourName = cursor.fetchall()
+	YourInfo = cursor.fetchall()
 	_EnemyID = request.form['EnemyID']
 	cursor.execute("SELECT Name,Type_1,Type_2 FROM pokemonData WHERE id=%s",_EnemyID)
-	EnemyName = cursor.fetchall()
+	EnemyInfo = cursor.fetchall()
+	
 
-	return json.dumps({'yourpokename':str(YourName[0][0]),'yourpoketype1':str(YourName[0][1]),'yourpoketype2':str(YourName[0][2]),'enemypokename':str(EnemyName[0][0]),'enemypoketype1':str(EnemyName[0][1]),'enemypoketype2':str(EnemyName[0][2])})
+	return json.dumps({'yourpokename':str(YourInfo[0][0]),'yourpoketype1':str(YourInfo[0][1]),'yourpoketype2':str(YourInfo[0][2]),'enemypokename':str(EnemyInfo[0][0]),'enemypoketype1':str(EnemyInfo[0][1]),'enemypoketype2':str(EnemyInfo[0][2])})
+    except Exception as e:
+        return json.dumps({'error':str(e)})
+
+@app.route('/signUp02', methods=['POST'])
+def signUp02():
+    try:
+	_YourType1 = request.form['YourType1']
+	_EnemyType1 = request.form['EnemyType1']
+	cursor.execute("SELECT " + _EnemyType1 + " FROM pokemonRest WHERE Type='" + _YourType1 + "'")
+	YourInfo = cursor.fetchall()
+	cursor.execute("SELECT " + _YourType1 + " FROM pokemonRest WHERE Type='" + _EnemyType1 + "'")
+	EnemyInfo = cursor.fetchall()
+	
+
+	return json.dumps({'yourdamage':str(YourInfo[0][0]),'enemydamage':str(EnemyInfo[0][0])})
     except Exception as e:
         return json.dumps({'error':str(e)})
 
