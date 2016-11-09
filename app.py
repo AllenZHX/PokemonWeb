@@ -45,7 +45,7 @@ def signUp():
 	cursor.execute("SELECT Name,Type_1,Type_2 FROM pokemonData WHERE id=%s",_EnemyID)
 	EnemyName = cursor.fetchall()
 
-	return json.dumps({'yourpoke':str(YourName[0]),'enemypoke':str(EnemyName[0])})
+	return json.dumps({'yourpokename':str(YourName[0][0]),'yourpoketype1':str(YourName[0][1]),'yourpoketype2':str(YourName[0][2]),'enemypokename':str(EnemyName[0][0]),'enemypoketype1':str(EnemyName[0][1]),'enemypoketype2':str(EnemyName[0][2])})
     except Exception as e:
         return json.dumps({'error':str(e)})
 
