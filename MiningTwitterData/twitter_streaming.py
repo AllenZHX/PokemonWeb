@@ -18,9 +18,9 @@ class listener(StreamListener):
         with open('pokemon.json','a') as f:
             f.write(data)
 
-        #client = MongoClient()
-        #db = client.twitter_DB
-        #collection = db.twitter_Collection
+        client = MongoClient()
+        db = client.twitter_db
+        collection = db.twitter_collection
         #tweet=json.loads(data)
         #collection.insert(tweet)
 
