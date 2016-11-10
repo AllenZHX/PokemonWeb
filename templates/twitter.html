@@ -1,12 +1,118 @@
 {% extends "head.html" %}
 {% block body %}
+<div id="example2">
 
-<div class="more">
-	<p>More in here!!!----twitter#########################</p>
-	<ul>
-	  {% for entry in poke %}
-	    <li><h2>{{entry[1]}}: {{entry[2]}}</h2></li>
-	  {% endfor %}
-	</ul>
+<div class="box wide">
+
+<p>Use SHIFT + Mouse Drag Region Selection combination on mouse-enabled devices to zoom in data for a specific range of pokemon</p>
+
 </div>
+    <div class="demo-section k-content wide">
+        <div id="chart2"></div>
+    </div>
+    <script>
+        // Sample data
+        var data2 = [];
+        
+         {% for entry in poke %} 
+          data2.push({
+            category: "{{entry[1]}}",
+            value: {{entry[2]}}
+          });
+        {% endfor %}
+
+        function createChart2() {
+            $("#chart2").kendoChart({
+                renderAs: "canvas",
+                dataSource: {
+                    data: data2
+                },
+ 		title: {
+                    text: "Pokemons"
+                },
+                categoryAxis: {
+                    min: 0,
+                    max: 10,
+                    labels: {
+                        rotation: "auto"
+                    }
+                },
+                series: [{
+                    type: "column",
+                    field: "value",
+                    categoryField: "category"
+                }],
+                pannable: {
+                    lock: "y"
+                },
+                zoomable: {
+                    mousewheel: {
+                        lock: "y"
+                    },
+                    selection: {
+                        lock: "y"
+                    }
+                }
+            });
+        }
+
+        $(document).ready(createChart2);
+        $("#example2").bind("kendo:skinChange", createChart2);
+    </script>
+</div>
+    
+    <div id="example">
+    <div class="demo-section k-content wide">
+        <div id="chart"></div>
+    </div>
+    <script>
+ 	{% for entry in poke %} 
+	var total
+	total+=10;
+	{% endfor %}
+        var data = [
+
+        {% for entry in poke %}    
+	{
+                "source":  "{{entry[1]}}",
+                "percentage": {{entry[2]}}/9*100,
+                "explode": true
+            },
+{% endfor %}
+            
+        ];
+
+        function createChart() {
+            $("#chart").kendoChart({
+                title: {
+                    text: "Top 3 Pokemons"
+                },
+                legend: {
+                    position: "bottom"
+                },
+                dataSource: {
+                    data: data
+                },
+                series: [{
+                    type: "pie",
+                    field: "percentage",
+                    categoryField: "source",
+                    explodeField: "explode"
+                }],
+                seriesColors: ["#03a9f4", "#ff9800", "#4caf50","#ffffff"],
+                tooltip: {
+                    visible: true,
+                    template: "${ category } - ${ value }%"
+                }
+            });
+        }
+
+        $(document).ready(createChart);
+        $("#example").bind("kendo:skinChange", createChart);
+    </script>
+
+</div>
+ 
+
+
 {% endblock %}
