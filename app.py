@@ -9,11 +9,13 @@ from threading import Thread
 app = Flask(__name__,static_url_path = "")
 mysql = MySQL()
 
-app.config['MYSQL_DATABASE_USER'] = 'root'
+# app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_USER'] = 'flaskdemo'
 #app.config['MYSQL_DATABASE_PASSWORD'] = ',26187108hoog'
-app.config['MYSQL_DATABASE_PASSWORD'] = '1'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'flaskdemo'
 app.config['MYSQL_DATABASE_DB'] = 'pokemon'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+# app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_HOST'] = 'flasktest.cf70m8cjvbfe.us-east-1.rds.amazonaws.com'
 mysql.init_app(app)
 conn = mysql.connect()
 cursor = conn.cursor()
@@ -87,7 +89,8 @@ def main():
 
 if __name__ == "__main__":
 	app.run(host='10.0.2.15')   # BUG! BUG! BUG! cannot use ctrl+C to stop it!!!!!
-	
+	# app.run()   # BUG! BUG! BUG! cannot use ctrl+C to stop it!!!!!
+
 	
 
 
