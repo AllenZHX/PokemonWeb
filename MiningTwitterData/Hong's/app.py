@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, json
 
-from flaskext.mysql import MySQL
+from flask.ext.mysql import MySQL
 from process import wordscount
 from process import getallpokenames
 import time
@@ -10,7 +10,8 @@ app = Flask(__name__,static_url_path = "")
 mysql = MySQL()
 
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = ',26187108hoog'
+#app.config['MYSQL_DATABASE_PASSWORD'] = ',26187108hoog'
+app.config['MYSQL_DATABASE_PASSWORD'] = '1'
 app.config['MYSQL_DATABASE_DB'] = 'pokemon'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
