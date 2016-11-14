@@ -7,16 +7,20 @@ collection = db.twitter_collection
 
 app = Flask(__name__)
 
-tweets_iterator = collection.find({'text': {'$regex': 'Pikachu'}})
-count=0
-for tweet in tweets_iterator:
-    count=count+1
-    print tweet['text'],count
-    print   "***********"
+def countTweets(name):
+    tweets_iterator = collection.find({'text': {'$regex': name}})
+    count = 0
+    for tweet in tweets_iterator:
+        count = count + 1
+        # print tweet['text'], count
+        # print   "***********"
+    return count
 
-f = open('top3','wb')
-f.write(str(count)) # python will convert \n to os.linesep
-f.close() # you can omit in most cases as the destructor will call it
+print countTweets("Mewtwo")
+
+# f = open('top3','wb')
+# f.write(str(count)) # python will convert \n to os.linesep
+# f.close() # you can omit in most cases as the destructor will call it
 
 @app.route('/',methods=['POST','PUT','GET'])
 def getAllPokemon():
