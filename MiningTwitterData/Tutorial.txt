@@ -13,3 +13,7 @@ http://api.mongodb.com/python/current/tutorial.html?_ga=1.130322575.1610853117.1
 5: Twitter API:
 (1)REST API: including Search API
 (2)Streaming API:
+
+6: How to log into AWS MySQL instance?
+mysql -h flasktest.cf70m8cjvbfe.us-east-1.rds.amazonaws.com -P 3306 -u flaskdemo -p
+(note: password is: flaskdemo)
