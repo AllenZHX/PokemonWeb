@@ -66,16 +66,16 @@
         <div id="chart"></div>
     </div>
     <script>
+        var total=0;
  	{% for entry in poke02 %} 
-	var total
-	total+=10;
+	    total+={{entry[2]}};
 	{% endfor %}
         var data = [
 
         {% for entry in poke02 %}    
 	{
                 "source":  "{{entry[1]}}",
-                "percentage": {{entry[2]}}/9*100,
+                "percentage": {{entry[2]}}/total*100,
                 "explode": true
             },
 {% endfor %}
@@ -113,10 +113,13 @@
 
 </div>
 <div>
+{% for data in twitterdata %}
 <blockquote class="example-obtuse">
-        <p>{{twitterdata}}</p>
+        <p>{{data}}</p>
       </blockquote>
+{% endfor %}
 </div>
+
  
 
 

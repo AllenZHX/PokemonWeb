@@ -13,7 +13,7 @@ mysql = MySQL()
 
 app.config['MYSQL_DATABASE_USER'] = 'root'
 #app.config['MYSQL_DATABASE_USER'] = 'flaskdemo'
-app.config['MYSQL_DATABASE_PASSWORD'] = ',26187108hoog'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
 #app.config['MYSQL_DATABASE_PASSWORD'] = 'flaskdemo'
 app.config['MYSQL_DATABASE_DB'] = 'pokemon'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
@@ -95,7 +95,7 @@ def show_poke():
 	query = "SELECT * FROM pokemonCount ORDER BY Freq DESC LIMIT 3"
 	cursor.execute(query)
     	poke02 = cursor.fetchall()
-	twitterdata = getPokeTwitter(poke[0][1].lower())
+	twitterdata = getPokeTwitter(poke[2][1].lower())
     	return render_template('twitter.html', poke=poke, poke02=poke02,twitterdata=twitterdata)
 
 @app.route("/")
@@ -103,7 +103,7 @@ def main():
 	return render_template('index.html')
 
 if __name__ == "__main__":
-	app.run(host='10.0.2.15')   # BUG! BUG! BUG! cannot use ctrl+C to stop it!!!!!
+	app.run(host='0.0.0.0', port='80')   # BUG! BUG! BUG! cannot use ctrl+C to stop it!!!!!
 	# app.run()   # BUG! BUG! BUG! cannot use ctrl+C to stop it!!!!!
 
 	

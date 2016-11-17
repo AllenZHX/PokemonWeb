@@ -3,7 +3,7 @@ CREATE DATABASE pokemon;
 use pokemon
 
 CREATE TABLE `pokemonData`(
-`#` INT NOT NULL AUTO_INCREMENT,
+`id` INT NOT NULL AUTO_INCREMENT,
 `Name` VARCHAR(50) NOT NULL,
 `Type_1` VARCHAR(30) NOT NULL,
 `Type_2` VARCHAR(30) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE `pokemonData`(
 `Speed` INT NOT NULL,
 `Generation` INT NOT NULL,
 `Legendary` VARCHAR(20) NOT NULL,
-PRIMARY KEY (`#`));
+PRIMARY KEY (`id`));
 
 
 ????put Pokemon.csv under the folder "/var/lib/mysql-files", but permission problem here????
@@ -27,7 +27,7 @@ PRIMARY KEY (`#`));
 !!!!Done!
 
 
-LOAD DATA INFILE '/var/lib/mysql-files/Pokemon.csv'
+LOAD DATA LOCAL INFILE '/home/ubuntu/Documents/PokemonWeb/data/Pokemon.csv'
 INTO TABLE `pokemonData`
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -51,7 +51,7 @@ CREATE TABLE `pokemonCount`(
 
 !!!!Done!
 
-LOAD DATA INFILE '/var/lib/mysql-files/Count.csv'
+LOAD DATA LOCAL INFILE '/home/ubuntu/Documents/PokemonWeb/data/Count.csv'
 INTO TABLE `pokemonCount`
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -86,7 +86,7 @@ PRIMARY KEY (`id`));
 !!!!"cd /var/lib/mysql-files"
 !!!!"cp -b /home/hong/PokemonWeb/data/xiangke.csv /var/lib/mysql-files" 
 
-LOAD DATA INFILE '/var/lib/mysql-files/xiangke.csv'
+LOAD DATA LOCAL INFILE '/home/ubuntu/Documents/PokemonWeb/data/xiangke.csv'
 INTO TABLE `pokemonRest`
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'

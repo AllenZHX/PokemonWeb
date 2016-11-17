@@ -11,7 +11,6 @@ collection = db.twitter_collection
 def wordscount():
 	textdata = []
 	rownum = 1
-	# with open('/home/hong/PokemonWeb/MiningTwitterData/pokemon.json') as data_file:
 	with open('./MiningTwitterData/pokemon.json') as data_file:
 		for line in data_file: 
 			if((rownum % 2) == 1):
@@ -43,7 +42,6 @@ def wordscount():
 
 def getallpokenames():
 	list = []
-	#with open('/home/hong/PokemonWeb/data/Count.csv', 'rb') as f:
 	with open('./data/Count.csv', 'rb') as f:
 	    reader = csv.reader(f)
 	    for row in reader:
@@ -59,10 +57,10 @@ def countTweets(name):
     return count
 
 def getPokeTwitter(name):
-    res=""
+    res=[]
     tweets_iterator = collection.find({'text': {'$regex': name}}).limit(10)
     for tweet in tweets_iterator:
-        res =res+(tweet['text'])+">>>>>>>>>>>>>>>>"
+        res.append(tweet['text'])
     return res
 
 print(getPokeTwitter("kakuna"))
