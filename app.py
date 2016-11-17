@@ -92,8 +92,11 @@ def show_poke():
 	query = "SELECT * FROM pokemonCount ORDER BY Freq DESC LIMIT 151"
 	cursor.execute(query)
     	poke = cursor.fetchall()
+	query = "SELECT * FROM pokemonCount ORDER BY Freq DESC LIMIT 3"
+	cursor.execute(query)
+    	poke02 = cursor.fetchall()
 	twitterdata = getPokeTwitter(poke[0][1].lower())
-    	return render_template('twitter.html', poke=poke, twitterdata=twitterdata)
+    	return render_template('twitter.html', poke=poke, poke02=poke02,twitterdata=twitterdata)
 
 @app.route("/")
 def main():
