@@ -3,41 +3,53 @@ from flask import Flask, render_template, request, json
 from flask.ext.mysql import MySQL
 from process import wordscount
 from process import getallpokenames
+from process import getPokeTwitter
+from process import countTweets
 import time
 from threading import Thread
 
 app = Flask(__name__,static_url_path = "")
 mysql = MySQL()
 
-# app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_USER'] = 'flaskdemo'
-#app.config['MYSQL_DATABASE_PASSWORD'] = ',26187108hoog'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'flaskdemo'
+app.config['MYSQL_DATABASE_USER'] = 'root'
+#app.config['MYSQL_DATABASE_USER'] = 'flaskdemo'
+app.config['MYSQL_DATABASE_PASSWORD'] = ',26187108hoog'
+#app.config['MYSQL_DATABASE_PASSWORD'] = 'flaskdemo'
 app.config['MYSQL_DATABASE_DB'] = 'pokemon'
-# app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-app.config['MYSQL_DATABASE_HOST'] = 'flasktest.cf70m8cjvbfe.us-east-1.rds.amazonaws.com'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+#app.config['MYSQL_DATABASE_HOST'] = 'flasktest.cf70m8cjvbfe.us-east-1.rds.amazonaws.com'
 mysql.init_app(app)
 conn = mysql.connect()
 cursor = conn.cursor()
 
-def updateData():
-	aa = wordscount()
+#################################################################################################################
+##############################################for real time project##############################################
+def updateData():    #use tokenize 											#
+	aa = wordscount()											#
+	pokemonNames = getallpokenames() 									#
+														#
+	for name in pokemonNames:										#
+		query = 'UPDATE pokemonCount SET Freq = ' + str(aa[name.lower()]) + ' WHERE Name="' +name+'"'   #
+		cursor.execute(query)										#
+		conn.commit()											#
+
+def updateData02():    #use mongodb
 	pokemonNames = getallpokenames() 
-
 	for name in pokemonNames:
-		query = 'UPDATE pokemonCount SET Freq = ' + str(aa[name.lower()]) + ' WHERE Name="' +name+'"'
-		cursor.execute(query)
+		aa = countTweets(name.lower());										#
+		query = 'UPDATE pokemonCount SET Freq = ' + str(aa) + ' WHERE Name="' +name+'"'   #
+		cursor.execute(query)										#
 		conn.commit()
-
-
-def test():
-	while(True):
-		time.sleep(30)  #  update every one hour(3600s)
-		updateData()
-		print("----test----")
-
-#Thread(target = test).start()
-
+														#
+def test():													#
+	while(True):												#
+		time.sleep(30)  #  update every one hour(3600s)							#
+		updateData()											#
+		print("----test----")										#
+														#
+#Thread(target = test).start()											#
+#################################################################################################################
+#updateData02()
 @app.route('/signUp', methods=['POST'])
 def signUp():
     try:
@@ -62,7 +74,6 @@ def signUp02():
 	YourInfo = cursor.fetchall()
 	cursor.execute("SELECT " + _YourType1 + " FROM pokemonRest WHERE Type='" + _EnemyType1 + "'")
 	EnemyInfo = cursor.fetchall()
-	
 
 	return json.dumps({'yourdamage':str(YourInfo[0][0]),'enemydamage':str(EnemyInfo[0][0])})
     except Exception as e:
@@ -78,10 +89,11 @@ def dictioinary():
 
 @app.route('/twitter')
 def show_poke():
-	query = "SELECT * FROM pokemonCount ORDER BY Freq DESC LIMIT 4"
+	query = "SELECT * FROM pokemonCount ORDER BY Freq DESC LIMIT 151"
 	cursor.execute(query)
     	poke = cursor.fetchall()
-    	return render_template('twitter.html', poke=poke)
+	twitterdata = getPokeTwitter(poke[0][1].lower())
+    	return render_template('twitter.html', poke=poke, twitterdata=twitterdata)
 
 @app.route("/")
 def main():

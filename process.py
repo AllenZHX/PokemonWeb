@@ -1,6 +1,13 @@
 import json
 import csv
 from pprint import pprint
+from pymongo import MongoClient
+
+
+client = MongoClient("mongodb://xiang:1@ds149437.mlab.com:49437/twitter_db")
+db = client.twitter_db
+collection = db.twitter_collection
+
 def wordscount():
 	textdata = []
 	rownum = 1
@@ -43,6 +50,22 @@ def getallpokenames():
 		list.append(row[1])
 	list = list[1:]
 	return list
+
+def countTweets(name):
+    tweets_iterator = collection.find({'text': {'$regex': name}})
+    count = 0
+    for tweet in tweets_iterator:
+        count = count + 1
+    return count
+
+def getPokeTwitter(name):
+    res=""
+    tweets_iterator = collection.find({'text': {'$regex': name}}).limit(10)
+    for tweet in tweets_iterator:
+        res =res+(tweet['text'])+">>>>>>>>>>>>>>>>"
+    return res
+
+print(getPokeTwitter("kakuna"))
 
 
 
